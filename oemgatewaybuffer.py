@@ -22,7 +22,7 @@ destination server.
 """
 class OemGatewayBuffer(object):
 
-    def __init__(self, bufferImplType="InMemoryBuffer"):
+    def __init__(self, bufferName, bufferImplType="InMemoryBuffer"):
         """Create a server data buffer initialized with server settings."""
         
         # Initialize logger
@@ -32,7 +32,7 @@ class OemGatewayBuffer(object):
         self._settings = {}
         
         # Create underlying buffer implementation
-        self.buffer = getattr(ogbi, bufferImplType)()
+        self.buffer = getattr(ogbi, bufferImplType)(bufferName)
         
     def set(self, **kwargs):
         """Update settings.
